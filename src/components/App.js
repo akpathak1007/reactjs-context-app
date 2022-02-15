@@ -4,6 +4,7 @@ import Flags from "country-flag-icons/react/1x1";
 import "./App.css";
 import UserCreate from "./UserCreate";
 import LanguageContext from "../context/LanguageContext";
+import ColorContext from "../context/ColorContext";
 
 class App extends React.Component {
   state = { language: "English" };
@@ -26,9 +27,11 @@ class App extends React.Component {
         >
           <Flags.NL title="United States" />
         </div>
-        <LanguageContext.Provider value={this.state.language}>
-          <UserCreate />
-        </LanguageContext.Provider>
+        <ColorContext.Provider value="success">
+          <LanguageContext.Provider value={this.state.language}>
+            <UserCreate />
+          </LanguageContext.Provider>
+        </ColorContext.Provider>
       </div>
     );
   }
