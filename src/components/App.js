@@ -3,6 +3,7 @@ import Flags from "country-flag-icons/react/1x1";
 
 import "./App.css";
 import UserCreate from "./UserCreate";
+import LanguageContext from "../context/LanguageContext";
 
 class App extends React.Component {
   state = { language: "English" };
@@ -15,7 +16,7 @@ class App extends React.Component {
         <span className="fw-bolder">Select a language</span>
         <div
           className=" d-inline-block m-2 icon"
-          onClick={() => this.onLanguageChaange("Engalish")}
+          onClick={() => this.onLanguageChaange("English")}
         >
           <Flags.US title="United States" />
         </div>
@@ -25,8 +26,9 @@ class App extends React.Component {
         >
           <Flags.NL title="United States" />
         </div>
-        <UserCreate />
-        <h4>{this.state.language}</h4>
+        <LanguageContext.Provider value={this.state.language}>
+          <UserCreate />
+        </LanguageContext.Provider>
       </div>
     );
   }
